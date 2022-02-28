@@ -17,7 +17,7 @@ class Categoria(models.Model):
 
 class Autor(models.Model):
     id = models.AutoField(primary_key=True)
-    nombres = models.CharField('Nombres de autor', max_length=255, null=False, blank=False)
+    nombre = models.CharField('Nombre de autor', max_length=255, null=False, blank=False)
     apellidos = models.CharField('Apellidos de autor', max_length=255, null=False, blank=False)
     facebook = models.URLField('Facebook', null='True', blank=True)
     twitter = models.URLField('Twitter', null='True', blank=True)
