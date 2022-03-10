@@ -50,15 +50,17 @@
                 </div>
             </div>
         </header>
+
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% block contenido %}
                     {% if posts %}
                         {% for post in posts %}
                             <!-- Post preview-->
                             <div class="post-preview">
-                                <a href="post.html">
+                                <a href="{% url 'blog:detalle_post' post.slug %}">
                                     <h2 class="post-title">{{post.titulo}}</h2>
                                     <h3 class="post-subtitle">{{post.descripcion}}</h3>
                                 </a>
@@ -77,9 +79,10 @@
                     {% else %}
                         <h1>No existen post registrados</h1>
                     {% endif %}
+                    {% endblock contenido %}
                     </div>
+                </div>
             </div>
-        </div>
         <!-- Footer-->
         <footer class="border-top">
             <div class="container px-4 px-lg-5">

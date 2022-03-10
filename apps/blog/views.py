@@ -7,6 +7,10 @@ def home(request):
     print (posts)
     return render(request, 'index.html', {'posts': posts})
 
+def detallesPost(request, slug):
+    post = Post.objects.get(slug=slug)
+    return render(request, 'post.html', {'detalle_post': post})
+
 def generales(request):
     posts = Post.objects.filter(estado=True, categoria=Categoria.objects.get(nombre='General'))
     return render(request, 'generales.html', {'posts': posts})
