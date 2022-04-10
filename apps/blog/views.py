@@ -4,6 +4,7 @@ from django.shortcuts import render
 from .models import Post, Categoria
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
+from django.core.paginator import Paginator
 # Create your views here.
 
 def home(request):
@@ -11,7 +12,11 @@ def home(request):
     posts = Post.objects.filter(estado = True)
     if queryset:
         posts = Post.objects.filter(Q(titulo__icontains = queryset) | Q(descripcion__icontains = queryset)).distinct()
-    print (posts)
+    
+    paginator = Paginator(posts, 1)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)    
+    
     return render(request, 'index.html', {'posts': posts})
 
 def detallesPost(request, slug):

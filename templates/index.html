@@ -168,7 +168,25 @@
           {% endif %} {% endblock contenido %}
         </div>
       </div>
+      <div class="row">
+          <div class="col">
+            {% if posts.has_previous %}
+              <div class="clearfix">
+                <a href="?page={{ posts.previous_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}" class="btn btn-primary float-left">Anterior</a>
+              </div>
+            {% endif %}
+          </div>
+          <div class="col">
+            {% if posts.has_next %}
+              <div class="clearfix">
+                <a href="?page={{ posts.next_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}" class="btn btn-primary float-right">Siguiente</a>
+              </div>
+            {% endif %}
+          </div>
+      </div>
     </div>
+
+
     <!-- Footer-->
     <footer class="border-top">
       <div class="container px-4 px-lg-5">
